@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentAudit — Is your AI agent leakable?</title>
+<style>
+:root{--bg:#0a0e14;--card:#161b22;--border:#30363d;--txt:#e6edf3;--dim:#8b949e;--acc:#f7784f;--grn:#3fb950}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.hero{text-align:center;padding:80px 24px 40px;max-width:760px;margin:0 auto}
+.badge{display:inline-block;background:#f7784f22;color:var(--acc);border:1px solid #f7784f44;border-radius:20px;padding:4px 14px;font-size:.8rem;font-weight:700;letter-spacing:.06em;margin-bottom:20px}
+h1{font-size:2.6rem;line-height:1.15;margin-bottom:16px}
+h1 span{color:var(--acc)}
+.sub{color:var(--dim);font-size:1.15rem;margin-bottom:8px}
+.sub b{color:var(--txt)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1000px;margin:48px auto;padding:0 24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h3{color:var(--acc);font-size:1rem;margin-bottom:10px}
+.card p{color:var(--dim);font-size:.92rem}
+.attack{border-left:3px solid #f85149;padding:12px 16px;margin:10px 0;background:#161b2288;border-radius:0 8px 8px 0}
+.attack b{color:#f85149}
+.quiz{max-width:680px;margin:48px auto;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.q{margin-bottom:14px;font-weight:600}
+.opts label{display:block;background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:6px 0;cursor:pointer;font-size:.9rem;font-weight:400}
+.opts input{margin-right:8px}
+.result{text-align:center;margin-top:24px;padding:24px;border-radius:12px}
+.risk-HIGH{background:#2d1114;border:1px solid #f8514966}.risk-MED{background:#2d2205;border:1px solid #e3b34166}.risk-LOW{background:#0f2417;border:1px solid #3fb95066}
+.risk-HIGH h2{color:#f85149}.risk-MED h2{color:#e3b341}.risk-LOW h2{color:#3fb950}
+.cta{display:block;max-width:480px;margin:32px auto;text-align:center;background:var(--acc);color:#1a0a05;font-weight:800;padding:18px;border-radius:10px;text-decoration:none;font-size:1.05rem}
+.cta:hover{filter:brightness(1.1)}
+footer{text-align:center;color:var(--dim);padding:40px 20px;font-size:.85rem}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:900px;margin:24px auto;padding:0 24px}
+.price{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.price h4{color:var(--acc)}.price .amt{font-size:2rem;font-weight:800;margin:8px 0}.price ul{list-style:none;text-align:left;color:var(--dim);font-size:.88rem}.price li{padding:4px 0;border-bottom:1px solid var(--border)}
+.price li:last-child{border:none}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="badge">AI AGENT SECURITY</div>
+<h1>Your AI agent will leak data.<br><span>Find out where, before attackers do.</span></h1>
+<p class="sub">I run <b>prompt-injection red-team attacks</b> against AI agents — the same attack class used in <b>OWASP LLM Top 10</b> and live Kaggle security competitions — and hand you the fixes.</p>
+</div>
+
+<div class="grid">
+<div class="card"><h3>→ Data exfiltration tests</h3><p>Can a poisoned email or webpage make your agent POST secrets to an attacker URL? Most agents with tool access: yes.</p></div>
+<div class="card"><h3>→ Confused deputy tests</h3><p>Can untrusted input trick your agent into emailing files to outsiders? The agent follows instructions it shouldn't trust.</p></div>
+<div class="card"><h3>→ Guardrail bypass tests</h3><p>Your filter blocks "obvious" attacks. Attackers phrase them as diagnostics, backups, cache-warmups. I test those.</p></div>
+</div>
+
+<div class="quiz">
+<div class="q">1. Does your agent have HTTP/web tools?</div>
+<div class="opts" id="q1"><label><input type="radio" name="q1" value="3" checked>Yes — it can fetch or POST URLs</label><label><input type="radio" name="q1" value="0">No</label></div>
+<div class="q" style="margin-top:16px">2. Does it read email, web pages, or user-uploaded files?</div>
+<div class="opts" id="q2"><label><input type="radio" name="q2" value="3" checked>Yes — untrusted content flows in</label><label><input type="radio" name="q2" value="1">Only trusted internal data</label></div>
+<div class="q" style="margin-top:16px">3. Can it send email / messages / write externally?</div>
+<div class="opts" id="q3"><label><input type="radio" name="q3" value="3" checked>Yes</label><label><input type="radio" name="q3" value="0">No</label></div>
+<div class="q" style="margin-top:16px">4. Do you have a prompt-injection filter/guardrail?</div>
+<div class="opts" id="q4"><label><input type="radio" name="q4" value="0" checked>None</label><label><input type="radio" name="q4" value="1">Keyword filter</label><label><input type="radio" name="q4" value="0">LLM-based guardrail</label></div>
+<div class="q" style="margin-top:16px">5. Has anyone red-teamed it with adversarial inputs?</div>
+<div class="opts" id="q5"><label><input type="radio" name="q5" value="3" checked>Never</label><label><input type="radio" name="q5" value="1">Informally</label><label><input type="radio" name="q5" value="0">Yes, professionally</label></div>
+<div class="result risk-MED" id="result"><h2 id="score">–</h2><p id="verdict" style="color:var(--dim)">Answer the 5 questions above</p></div>
+</div>
+
+<div class="pricing">
+<div class="price"><h4>SCAN</h4><div class="amt">$250</div><ul><li>25 automated injection probes</li><li>Written findings report</li><li>48-hour turnaround</li></ul></div>
+<div class="price"><h4>AUDIT</h4><div class="amt">$500</div><ul><li>Everything in Scan</li><li>Custom attack chains for YOUR tools</li><li>Fix recommendations + call</li></ul></div>
+<div class="price"><h4>RETAINER</h4><div class="amt">$1,500/mo</div><ul><li>Monthly re-tests as you ship</li><li>Pre-launch reviews</li><li>Slack access</li></ul></div>
+</div>
+
+<a class="cta" href="mailto:absbm14@gmail.com?subject=AgentAudit%20—%20test%20my%20agent">Test my agent → absbm14@gmail.com</a>
+<footer>Built by James Thompson · San Diego · Attack methodology validated in live AI-security competition (50 candidate attack suite) · <a href="https://jtabsbm.github.io/callbackops-tools/" style="color:var(--acc)">Other tools</a></footer>
+
+<script>
+document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', calc));
+function calc(){
+  let s = 0;
+  document.querySelectorAll('input[type=radio]:checked').forEach(r => s += +r.value);
+  const el = document.getElementById('result');
+  const sc = document.getElementById('score');
+  const v = document.getElementById('verdict');
+  if (s >= 9) { el.className = 'result risk-HIGH'; sc.textContent = 'HIGH RISK (' + s + '/15)'; v.textContent = 'Your agent has untrusted inputs + external tools + no adversarial testing — the exact profile attackers target first. A Scan is urgent.'; }
+  else if (s >= 5) { el.className = 'result risk-MED'; sc.textContent = 'MEDIUM RISK (' + s + '/15)'; v.textContent = 'Partial exposure. An Audit maps exactly which paths are exploitable before you find out from an incident.'; }
+  else { el.className = 'result risk-LOW'; sc.textContent = 'LOWER RISK (' + s + '/15)'; v.textContent = 'Good fundamentals — but guardrails decay as you add tools. A baseline Scan documents your posture for customers/security questionnaires.'; }
+}
+calc();
+</script>
+</body></html>
