@@ -47,7 +47,7 @@
 <div class="breakdown" id="breakdown"></div>
 </div>
 <a class="cta" href="mailto:absbm14@gmail.com?subject=Recover%20my%20missed%20calls%20—%20CallbackOps">Recover these leads → CallbackOps $750 Recovery Sprint</a>
-<footer>Built by James Christoph · absbm14@gmail.com · San Diego · <a href="https://jtabsbm.github.io/callbackops-tools/" style="color:var(--acc)">All free tools</a></footer>
+<footer>Built by James Thompson · absbm14@gmail.com · San Diego · <a href="https://jtabsbm.github.io/callbackops-tools/" style="color:var(--acc)">All free tools</a></footer>
 </div>
 <script>
 function fmt(n){return '$'+Math.round(n).toLocaleString()}
@@ -78,5 +78,21 @@ function animateTo(id,target){
 }
 ['calls','missed','jobval','close'].forEach(i=>document.getElementById(i).addEventListener('input',calc));
 calc();
+</script>
+<script>
+// Branded-embed support: ?brand=&color=&cta= params (used by agencies reselling this tool)
+(function(){
+  const p = new URLSearchParams(location.search);
+  const brand = p.get('brand'); if (brand) {
+    document.querySelectorAll('.brand, footer, h1').forEach(el => { if (el.textContent.includes('James Thompson') || el.textContent.includes('CallbackOps')) el.textContent = brand; });
+  }
+  const color = p.get('color'); if (color) {
+    document.documentElement.style.setProperty('--acc', color);
+    document.querySelectorAll('a.cta, button').forEach(el => el.style.background = color);
+  }
+  const cta = p.get('cta'); if (cta) {
+    document.querySelectorAll('a.cta, footer a').forEach(a => { if (a.href.includes('mailto:absbm14')) a.href = cta; });
+  }
+})();
 </script>
 </body></html>

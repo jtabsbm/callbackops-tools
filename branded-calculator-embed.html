@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Branded Calculator — Embed Generator</title>
+<style>
+:root{--bg:#0a0e14;--card:#161b22;--border:#30363d;--txt:#e6edf3;--dim:#8b949e;--acc:#4fc3f7}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:56px 20px}
+h1{font-size:1.8rem;margin-bottom:8px}h1 span{color:var(--acc)}
+.sub{color:var(--dim);margin-bottom:24px}
+label{display:block;color:var(--dim);font-size:.82rem;margin:14px 0 6px;font-weight:600}
+input{width:100%;background:#0d1117;border:1px solid var(--border);border-radius:8px;color:var(--txt);padding:11px;font-size:.95rem}
+textarea{width:100%;background:#0d1117;border:1px solid var(--acc);border-radius:8px;color:var(--acc);padding:12px;font-family:ui-monospace,monospace;font-size:.8rem;margin-top:20px;min-height:110px}
+.preview{margin-top:24px;border:1px dashed var(--border);border-radius:12px;overflow:hidden}
+footer{margin-top:28px;text-align:center;color:var(--dim);font-size:.8rem}
+</style></head><body><div class="wrap">
+<h1>Your brand on the <span>missed-call calculator</span></h1>
+<p class="sub">Generate an embed snippet: your business name + accent color on the calculator your visitors already love. No signup.</p>
+<label>Business / agency name</label><input id="brand" value="Acme HVAC" maxlength="40">
+<label>Accent color (hex)</label><input id="color" value="#4fc3f7" maxlength="9">
+<label>Your contact link (mailto or site)</label><input id="contact" value="mailto:you@example.com" maxlength="120">
+<textarea id="snippet" readonly></textarea>
+<div class="preview"><iframe id="frame" style="width:100%;height:640px;border:0" title="preview"></iframe></div>
+<footer>Powered by <a href="https://jtabsbm.github.io/callbackops-tools/" style="color:var(--acc)">free tools for service businesses</a></footer>
+<script>
+const base = 'https://jtabsbm.github.io/callbackops-tools/missed-call-cost-calculator.html';
+function upd(){
+  const u = new URL(base);
+  u.searchParams.set('brand', document.getElementById('brand').value);
+  u.searchParams.set('color', document.getElementById('color').value);
+  u.searchParams.set('cta', document.getElementById('contact').value);
+  const src = u.toString();
+  document.getElementById('frame').src = src;
+  document.getElementById('snippet').value =
+    '<iframe src="' + src + '" style="width:100%;max-width:640px;height:640px;border:0;border-radius:12px" title="Missed call cost calculator"></iframe>';
+}
+['brand','color','contact'].forEach(id => document.getElementById(id).addEventListener('input', upd));
+upd();
+</script></body></html>
