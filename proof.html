@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CallbackOps — Proof Dashboard</title>
+<style>
+:root { color-scheme: dark; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0b0f14; color: #d7dee6;
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 48px 24px 64px;
+}
+.wrap { max-width: 1000px; margin: 0 auto; }
+header h1 { color: #f2f6fa; font-size: 28px; letter-spacing: -0.02em; }
+header .honesty { color: #8fa3b3; margin-top: 8px; max-width: 640px; }
+header .stamp { color: #5c7186; font-size: 13px; margin-top: 12px; }
+h2 { color: #f2f6fa; font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em; margin: 40px 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.card {
+  background: #111820; border: 1px solid #1e2a36; border-radius: 10px; padding: 18px 18px 16px;
+}
+.card .num { color: #4dd88a; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.card .lbl { color: #d7dee6; font-size: 14px; margin-top: 2px; }
+.card .sub { color: #8fa3b3; font-size: 12.5px; margin-top: 6px; }
+.card.placeholder { border-style: dashed; border-color: #2a3a49; background: #0e141b; }
+.card.placeholder .num { color: #43596c; }
+.card.real .num { color: #4dd88a; }
+footer { margin-top: 48px; border-top: 1px solid #1e2a36; padding-top: 20px; }
+footer h3 { color: #8fa3b3; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+footer ul { list-style: none; }
+footer li { color: #5c7186; font-size: 13px; padding: 3px 0; }
+footer li b { color: #8fa3b3; font-weight: 600; }
+.note { color: #5c7186; font-size: 13px; margin-top: 20px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>CallbackOps — Proof Dashboard</h1>
+      <p class="honesty">Every number on this page is machine-generated from our own logs. Nothing here is a projection.</p>
+      <p class="stamp">Generated: August 16, 2026 · 15:30 UTC-07:00 · updates monthly · edit proof-stats.json, never the HTML</p>
+    </header>
+
+    <h2>Day 1 — what exists today</h2>
+    <div class="grid">
+        <div class="card real"><div class="num">332</div><div class="lbl">Prospects researched</div></div>
+        <div class="card real"><div class="num">94</div><div class="lbl">Businesses contacted</div></div>
+        <div class="card real"><div class="num">12</div><div class="lbl">Voicemail classes verified</div><div class="sub">12/12 leads classified, avg confidence 0.947</div></div>
+        <div class="card real"><div class="num">1,044</div><div class="lbl">SEO pages live</div></div>
+        <div class="card real"><div class="num">18</div><div class="lbl">Hub tools live</div></div>
+        <div class="card real"><div class="num">140</div><div class="lbl">Products built</div><div class="sub">zero cash upfront — built, not bought</div></div>
+        <div class="card real"><div class="num">$0</div><div class="lbl">Revenue</div><div class="sub">counting collected cash only — no projections</div></div>
+    </div>
+
+    <h2>First-client metrics</h2>
+    <div class="grid">
+        <div class="card placeholder"><div class="num">—</div><div class="lbl">Leads recovered</div><div class="sub">awaiting first client result</div></div>
+        <div class="card placeholder"><div class="num">—</div><div class="lbl">Jobs booked from recovered leads</div><div class="sub">awaiting first client result</div></div>
+        <div class="card placeholder"><div class="num">—</div><div class="lbl">$ value of recovered jobs</div><div class="sub">awaiting first client result</div></div>
+        <div class="card placeholder"><div class="num">—</div><div class="lbl">Case studies published</div><div class="sub">first case study publishes with the first client win</div></div>
+        <div class="card placeholder"><div class="num">—</div><div class="lbl">Testimonials on record</div><div class="sub">collected only after a win, never asked twice</div></div>
+    </div>
+    <p class="note">Dashed cards are placeholders — they fill in as real client results exist. We publish zeros and blanks before we publish claims.</p>
+
+    <footer>
+      <h3>Where each number comes from</h3>
+      <ul>
+        <li><b>Prospects researched:</b> prospect research logs + metro crawls (counts only, zero PII)</li>
+        <li><b>Businesses contacted:</b> outreach pipeline CSVs (counts only, zero PII)</li>
+        <li><b>Voicemail classes verified:</b> verified agent run log, 2026-08-15 (shipped in the AI Lead Agent kit)</li>
+        <li><b>SEO pages live:</b> seo-pages/ directory count</li>
+        <li><b>Hub tools live:</b> tools hub page inventory</li>
+        <li><b>Products built:</b> products/ directory count</li>
+        <li><b>Revenue:</b> revenue-tracker (collected cash only, never expected or promised)</li>
+      </ul>
+    </footer>
+  </div>
+</body>
+</html>
