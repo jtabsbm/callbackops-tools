@@ -43,14 +43,15 @@ th{color:var(--acc2)}td{color:var(--dim)}
 <div id="res" style="display:none">
 <div class="out"><div class="k" style="color:var(--dim);font-size:.8rem">ANNUAL REVENUE LEFT ON THE TEE SHEET</div><div class="big" id="ann">$0</div>
 <div class="bar"><div id="barfill" style="width:62%"></div></div>
-<div class="note" id="barnote"></div></div>
+<div class="note" id="barnote"></div>
+<div class="note" id="upl" style="color:var(--acc)"></div></div>
 <div class="row">
 <div class="stat"><div class="k">Unsold rounds/day</div><div class="v" id="ud">0</div></div>
 <div class="stat"><div class="k">Daily capacity</div><div class="v" id="cap">0</div></div>
 <div class="stat"><div class="k">Utilization gap</div><div class="v" id="gap">0%</div></div>
 </div>
 <h3 style="color:var(--acc2);margin-top:18px">Levers, ranked by recovery</h3>
-<table><tr><th>Lever</th><th>Cost/mo</th><th>Recovers/yr</th><th>Note</th></tr><tbody id="fx"></tbody></table>
+<table><tr><th>Lever</th><th>Cost/mo</th><th>Recovers/yr</th><th>Payback</th><th>Note</th></tr><tbody id="fx"></tbody></table>
 <p class="note">Model: 85% practical ceiling; 360 days; dynamic pricing recovers ~35% of gap (8-15% total-revenue lift studies scaled). Benchmark, not audit.</p>
 </div>
 
@@ -66,10 +67,12 @@ var r=parseFloat(document.getElementById('r').value)||0,
     u=parseFloat(document.getElementById('u').value)||0;
 if(u<=0){u=0.01}
 var ceil=0.85, cap=r/u, gap=Math.max(0,ceil-u), ud=cap*gap, ann=ud*360*f;
+var cur=r*f*360; // current annual revenue (rounds played x fee x days)
 document.getElementById('res').style.display='block';
 document.getElementById('ann').textContent=fmt(ann);
 document.getElementById('barfill').style.width=Math.round(u*100)+'%';
 document.getElementById('barnote').textContent='You fill '+Math.round(u*100)+'% of capacity; practical ceiling is 85%.';
+document.getElementById('upl').textContent='Dynamic pricing on this sheet: +'+fmt(cur*0.08)+' to +'+fmt(cur*0.15)+'/yr (industry 8-15% lift on perishable inventory).';
 document.getElementById('ud').textContent=ud.toFixed(1);
 document.getElementById('cap').textContent=cap.toFixed(0);
 document.getElementById('gap').textContent=Math.round(gap*100)+'%';
@@ -77,7 +80,7 @@ var lev=[['Dynamic pricing',199,ann*0.35,'8-15% lift; peak premium + trough disc
 var rows='';
 for(var i=0;i<lev.length;i++){
  var pay=lev[i][1]===0?'instant':(lev[i][1]/(lev[i][2]/12)).toFixed(1)+' mo';
- rows+='<tr><td>'+lev[i][0]+'</td><td>'+fmt(lev[i][1])+'</td><td>'+fmt(lev[i][2])+'</td><td>'+lev[i][3]+'</td></tr>';
+ rows+='<tr><td>'+lev[i][0]+'</td><td>'+fmt(lev[i][1])+'</td><td>'+fmt(lev[i][2])+'</td><td>'+pay+'</td><td>'+lev[i][3]+'</td></tr>';
 }
 document.getElementById('fx').innerHTML=rows;
 }
