@@ -5,5 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A fixed-scope 48-hour missed-lead signal audit for home-service businesses.">
   <title>48-Hour Missed-Lead Signal Audit | CallbackOps</title>
+  <style>
+    :root {
+      --ink: #16201d;
+      --muted: #68736e;
+      --paper: #f5f5ef;
+      --surface: #fffefa;
+      --line: #d8ddd5;
+      --green: #1d5b48;
+      --green-dark: #123d32;
+      --orange: #ed8b47;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Avenir Next', Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.55; }
+    a { color: inherit; }
+    .wrap { width: min(980px, calc(100% - 36px)); margin: 0 auto; }
+    header { padding: 26px 0; display: flex; justify-content: space-between; align-items: center; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -.03em; }
+    .brand span { color: var(--green); }
+    header a:last-child { color: var(--muted); font-size: 13px; text-decoration: none; }
+    .hero { padding: 72px 0 64px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .eyebrow { color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.055em; line-height: 1.02; }
+    h1 { font-size: clamp(48px, 7vw, 78px); margin: 18px 0 22px; max-width: 700px; }
+    h2 { font-size: clamp(34px, 4vw, 52px); margin: 0 0 18px; }
+    .lead { color: var(--muted); font-size: 19px; max-width: 590px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--green); background: var(--green); color: white; text-decoration: none; font-weight: 800; }
+    .button.secondary { background: transparent; color: var(--green); }
+    .card { border: 1px solid var(--line); border-radius: 24px; background: var(--surface); padding: 28px; }
+    .price { background: var(--green-dark); color: white; border-radius: 24px; padding: 30px; min-height: 290px; display: flex; flex-direction: column; justify-content: space-between; }
+    .price .label { color: #f6bd8d; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .amount { font-family: var(--serif); font-size: 58px; line-height: 1; margin: 24px 0 8px; }
+    .price p { color: #c6d9d0; margin: 0; font-size: 14px; }
+    .price .button { background: #f6bd8d; color: var(--green-dark); border-color: #f6bd8d; }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 34px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    li + li { margin-top: 9px; }
+    .fine { color: var(--muted); font-size: 12px; margin-top: 18px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 38px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 18px; }
+    @media (max-width: 760px) {
+      .hero, .grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero { padding-top: 44px; }
+      footer { flex-direction: column; }
+    }
+  </style>
 </head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="index.html">callback<span>ops</span></a>
+    <a href="callbackops-landing.html">See the full pilot →</a>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">A paid test, not a leap of faith</div>
+        <h1>Find the leads your current process is losing.</h1>
+        <p class="lead">In 48 hours, I review one missed-call or web-inquiry path and return a measured signal audit: what happened, where the handoff broke, and the smallest recovery move worth testing.</p>
+        <div class="actions">
+          <a class="button" href="https://contra.com/s/solcUlAk-48-hour-missed-lead-signal-audit">Request the audit</a>
+          <a class="button secondary" href="callbackops-landing.html#offer">See the $750 pilot</a>
+        </div>
+        <p class="fine">Read-only, evidence-gated, and built around the tools you already own. No ad spend or CRM access required.</p>
+      </div>
+      <div class="price">
+        <div>
+          <div class="label">Fixed scope</div>
+          <div class="amount">$250</div>
+          <p>One path · 48 hours · one concise handoff memo</p>
+        </div>
+        <a class="button" href="https://contra.com/s/solcUlAk-48-hour-missed-lead-signal-audit">Start with the audit →</a>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="eyebrow">What you receive</div>
+      <h2>Enough evidence to choose the next move.</h2>
+      <div class="grid">
+        <div class="card"><h3>Baseline signal</h3><p>A bounded estimate from the sample you provide: response lag, missed contacts, handoff gaps, and obvious exceptions.</p></div>
+        <div class="card"><h3>Three recovery opportunities</h3><p>Prioritized changes that can be tested without buying a new platform or handing over credentials.</p></div>
+        <div class="card"><h3>Handoff memo</h3><p>A short, plain-language report with the evidence used, open questions, and a practical next step.</p></div>
+        <div class="card"><h3>Pilot credit</h3><p>The full $250 is credited if you start the $750 CallbackOps pilot within 14 days.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="eyebrow">Boundaries</div>
+      <h2>Useful without overpromising.</h2>
+      <div class="card">
+        <ul>
+          <li>Use redacted exports or a small sample. Do not send passwords, tokens, payment data, or customer secrets.</li>
+          <li>This is an evidence review, not a promise of booked jobs, savings, or revenue.</li>
+          <li>Any implementation or security testing requires separate written scope and client authorization.</li>
+        </ul>
+        <p class="fine">Questions: <a href="mailto:absbm14@gmail.com">absbm14@gmail.com</a> · Public tools and proof: <a href="index.html">CallbackOps tools hub</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>CallbackOps · James Christoph</span>
+    <span><a href="https://github.com/jtabsbm/callbackops-tools">Public source</a></span>
+  </footer>
+</body>
 </html>
